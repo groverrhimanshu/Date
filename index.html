@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #question-container {
+            text-align: center;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #no-btn {
+            position: absolute;
+        }
+
+        #thank-you-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="question-container">
+        <h1>Would you like to go on a date with me?</h1>
+        <button id="yes-btn">YES</button>
+        <button id="no-btn">NO</button>
+    </div>
+
+    <div id="thank-you-message">
+        <h1>Thank you!</h1>
+        <p>I knew you would say yes. Meet me tomorrow at 8 PM at Lispenard Street.</p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const questionContainer = document.getElementById('question-container');
+        const thankYouMessage = document.getElementById('thank-you-message');
+
+        // Function to move the "NO" button to a random position within the container
+        function moveNoButton() {
+            const containerWidth = questionContainer.offsetWidth;
+            const containerHeight = questionContainer.offsetHeight;
+
+            const newX = Math.random() * (containerWidth - noBtn.offsetWidth);
+            const newY = Math.random() * (containerHeight - noBtn.offsetHeight);
+
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        }
+
+        // When "NO" is clicked, move the button
+        noBtn.addEventListener('mouseenter', moveNoButton);
+
+        // When "YES" is clicked, show the thank-you message
+        yesBtn.addEventListener('click', function () {
+            questionContainer.style.display = 'none';
+            thankYouMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
